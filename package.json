@@ -1,0 +1,25 @@
+{
+  "name": "data-analytics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "backend/server.js",
+  "scripts": {
+    "dev": "nodemon backend/server.js",
+    "start": "node backend/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "csvtojson": "^2.0.14",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mongoose": "^8.19.3",
+    "react-hot-toast": "^2.6.0",
+    "react-router-dom": "^7.9.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
