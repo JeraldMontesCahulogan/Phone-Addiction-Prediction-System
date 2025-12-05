@@ -14,13 +14,41 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 
-export default function EducationalVsRisk() {
+export default function EducationalVsRisk({ educationalTimeDailyVsRiskData }) {
+  // console.log(educationalTimeDailyVsRiskData);
+
+  const counts = educationalTimeDailyVsRiskData.reduce((acc, item) => {
+    const key = `${item.educational_hours}_${item.phone_addiction}`;
+    acc[key] = (acc[key] || 0) + 1;
+    return acc;
+  }, {});
+
   const data = [
-    { time: "<30 min", atRisk: 54, notAtRisk: 35 },
-    { time: "30-60 min", atRisk: 48, notAtRisk: 76 },
-    { time: "1-2 hrs", atRisk: 32, notAtRisk: 66 },
-    { time: "2-3 hrs", atRisk: 14, notAtRisk: 42 },
-    { time: ">3 hrs", atRisk: 4, notAtRisk: 12 },
+    {
+      time: "<1 hr",
+      atRisk: counts["less than 1 hour_yes"],
+      notAtRisk: counts["less than 1 hour_no"],
+    },
+    {
+      time: "1-3 hrs",
+      atRisk: counts["1 to 3 hours_yes"],
+      notAtRisk: counts["1 to 3 hours_no"],
+    },
+    {
+      time: "4-6 hrs",
+      atRisk: counts["4 to 6 hours_yes"],
+      notAtRisk: counts["4 to 6 hours_no"],
+    },
+    {
+      time: "7-9 hrs",
+      atRisk: counts["7 to 9 hours_yes"],
+      notAtRisk: counts["7 to 9 hours_no"],
+    },
+    {
+      time: ">9 hrs",
+      atRisk: counts["more than 9 hours_yes"],
+      notAtRisk: counts["more than 9 hours_no"],
+    },
   ];
 
   const chartConfig = {

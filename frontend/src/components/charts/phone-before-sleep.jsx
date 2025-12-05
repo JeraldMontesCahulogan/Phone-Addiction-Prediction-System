@@ -14,11 +14,11 @@ import {
 
 export default function PhoneBeforeSleep() {
   const data = [
-    { frequency: "Never", count: 28 },
-    { frequency: "Rarely", count: 56 },
-    { frequency: "Sometimes", count: 124 },
-    { frequency: "Often", count: 142 },
-    { frequency: "Always", count: 33 },
+    { frequency: "Never", count: 1 },
+    { frequency: "Rarely", count: 2 },
+    { frequency: "Sometimes", count: 3 },
+    { frequency: "Often", count: 4 },
+    { frequency: "Always", count: 5 },
   ];
 
   const chartConfig = {

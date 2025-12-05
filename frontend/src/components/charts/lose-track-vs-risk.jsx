@@ -14,13 +14,41 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 
-export default function LoseTrackVsRisk() {
+export default function LoseTrackVsRisk({ timePerceptionVsRiskData }) {
+  // console.log("Time Perception vs Risk Data:", timePerceptionVsRiskData);
+
+  const counts = timePerceptionVsRiskData.reduce((acc, item) => {
+    const key = `${item.lose_track_time}_${item.phone_addiction}`;
+    acc[key] = (acc[key] || 0) + 1;
+    return acc;
+  }, {});
+
   const data = [
-    { frequency: "Never", atRisk: 6, notAtRisk: 28 },
-    { frequency: "Rarely", atRisk: 16, notAtRisk: 51 },
-    { frequency: "Sometimes", atRisk: 84, notAtRisk: 72 },
-    { frequency: "Often", atRisk: 72, notAtRisk: 26 },
-    { frequency: "Always", atRisk: 24, notAtRisk: 4 },
+    {
+      frequency: "Never",
+      atRisk: counts["never_yes"],
+      notAtRisk: counts["never_no"],
+    },
+    {
+      frequency: "Rarely",
+      atRisk: counts["rarely_yes"],
+      notAtRisk: counts["rarely_no"],
+    },
+    {
+      frequency: "Sometimes",
+      atRisk: counts["sometimes_yes"],
+      notAtRisk: counts["sometimes_no"],
+    },
+    {
+      frequency: "Often",
+      atRisk: counts["often_yes"],
+      notAtRisk: counts["often_no"],
+    },
+    {
+      frequency: "Always",
+      atRisk: counts["always_yes"],
+      notAtRisk: counts["always_no"],
+    },
   ];
 
   const chartConfig = {

@@ -14,13 +14,41 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 
-export default function MealsVsRisk() {
+export default function MealsVsRisk({ phoneUseDuringMealsVsRiskData }) {
+  // console.log("Meals vs Risk Data:", phoneUseDuringMealsVsRiskData);
+
+  const counts = phoneUseDuringMealsVsRiskData.reduce((acc, item) => {
+    const key = `${item.phone_during_meals}_${item.phone_addiction}`;
+    acc[key] = (acc[key] || 0) + 1;
+    return acc;
+  }, {});
+
   const data = [
-    { frequency: "Never", atRisk: 6, notAtRisk: 36 },
-    { frequency: "Rarely", atRisk: 18, notAtRisk: 60 },
-    { frequency: "Sometimes", atRisk: 72, notAtRisk: 73 },
-    { frequency: "Often", atRisk: 68, notAtRisk: 30 },
-    { frequency: "Always", atRisk: 18, notAtRisk: 2 },
+    {
+      frequency: "Never",
+      atRisk: counts["never_yes"],
+      notAtRisk: counts["never_no"],
+    },
+    {
+      frequency: "Rarely",
+      atRisk: counts["rarely_yes"],
+      notAtRisk: counts["rarely_no"],
+    },
+    {
+      frequency: "Sometimes",
+      atRisk: counts["sometimes_yes"],
+      notAtRisk: counts["sometimes_no"],
+    },
+    {
+      frequency: "Often",
+      atRisk: counts["often_yes"],
+      notAtRisk: counts["often_no"],
+    },
+    {
+      frequency: "Always",
+      atRisk: counts["always_yes"],
+      notAtRisk: counts["always_no"],
+    },
   ];
 
   const chartConfig = {

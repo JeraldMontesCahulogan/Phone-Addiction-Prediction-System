@@ -14,20 +14,20 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 
-export default function InteractionFrequency({ personInteractionData }) {
+export default function InteractionFrequency() {
   // console.log("Person Interaction Data:", personInteractionData);
 
-  const counts = personInteractionData.reduce((acc, item) => {
-    acc[item] = (acc[item] || 0) + 1;
-    return acc;
-  }, {});
+  // const counts = personInteractionData.reduce((acc, item) => {
+  //   acc[item] = (acc[item] || 0) + 1;
+  //   return acc;
+  // }, {});
 
   const data = [
-    { frequency: "Never", count: counts["never"] || 0 },
-    { frequency: "Rarely", count: counts["rarely"] || 0 },
-    { frequency: "Sometimes", count: counts["sometimes"] || 0 },
-    { frequency: "Often", count: counts["often"] || 0 },
-    { frequency: "Always", count: counts["always"] || 0 },
+    { frequency: "Never", count: 1 },
+    { frequency: "Rarely", count: 2 },
+    { frequency: "Sometimes", count: 3 },
+    { frequency: "Often", count: 4 },
+    { frequency: "Always", count: 5 },
   ];
 
   const chartConfig = {

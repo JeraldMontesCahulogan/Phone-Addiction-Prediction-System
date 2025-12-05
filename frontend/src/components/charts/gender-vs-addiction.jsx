@@ -40,27 +40,6 @@ export default function GenderVsAddiction({ genderVsAddictionData }) {
     },
   ];
 
-  // const maleAtRisk = genderVsAddictionData.filter(
-  //   (data) => data.gender === "male" && data.phone_addiction === "yes"
-  // ).length;
-
-  // const maleNotAtRisk = genderVsAddictionData.filter(
-  //   (data) => data.gender === "male" && data.phone_addiction === "no"
-  // ).length;
-
-  // const femaleAtRisk = genderVsAddictionData.filter(
-  //   (data) => data.gender === "female" && data.phone_addiction === "yes"
-  // ).length;
-
-  // const femaleNotAtRisk = genderVsAddictionData.filter(
-  //   (data) => data.gender === "female" && data.phone_addiction === "no"
-  // ).length;
-
-  // const data = [
-  //   { gender: "Male", atRisk: maleAtRisk, notAtRisk: maleNotAtRisk },
-  //   { gender: "Female", atRisk: femaleAtRisk, notAtRisk: femaleNotAtRisk },
-  // ];
-
   const chartConfig = {
     atRisk: { label: "At Risk", color: "var(--chart-1)" },
     notAtRisk: { label: "Not At Risk", color: "var(--chart-2)" },
@@ -69,8 +48,11 @@ export default function GenderVsAddiction({ genderVsAddictionData }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Gender vs Phone Addiction</CardTitle>
-        <CardDescription>Addiction risk by gender</CardDescription>
+        <CardTitle>Gender</CardTitle>
+        <CardDescription>
+          Number of respondents per gender categories and their associated risk
+          levels.
+        </CardDescription>
       </CardHeader>
 
       <CardContent>

@@ -93,6 +93,7 @@ export const usePhoneAddictionDataStore = create((set) => ({
       const res = await axios.get("/phone-addiction/get");
       // console.log("data fetched: ", res.data.count);
       set({ phoneAddictionData: res.data.data, loading: false });
+      console.log("data fetched successfully");
     } catch (error) {
       console.error("Error fetching data:", error);
       set({ loading: false });

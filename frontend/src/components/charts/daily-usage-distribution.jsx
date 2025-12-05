@@ -14,20 +14,20 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 
-export default function DailyUsageDistribution({ dailyPhoneUsageData }) {
+export default function DailyUsageDistribution() {
   // console.log("Daily Phone Usage Data:", dailyPhoneUsageData);
 
-  const counts = dailyPhoneUsageData.reduce((acc, item) => {
-    acc[item] = (acc[item] || 0) + 1;
-    return acc;
-  }, {});
+  // const counts = dailyPhoneUsageData.reduce((acc, item) => {
+  //   acc[item] = (acc[item] || 0) + 1;
+  //   return acc;
+  // }, {});
 
   const data = [
-    { category: "<2 hrs", count: counts["less than 2 hours"] || 0 },
-    { category: "2-4 hrs", count: counts["2 to 4 hours"] || 0 },
-    { category: "5-7 hrs", count: counts["5 to 7 hours"] || 0 },
-    { category: "8-10 hrs", count: counts["8 to 10 hours"] || 0 },
-    { category: ">10 hrs", count: counts["more than 10 hours"] || 0 },
+    { category: "<2 hrs", count: 1 },
+    { category: "2-4 hrs", count: 2 },
+    { category: "5-7 hrs", count: 3 },
+    { category: "8-10 hrs", count: 4 },
+    { category: ">10 hrs", count: 5 },
   ];
 
   const chartConfig = {

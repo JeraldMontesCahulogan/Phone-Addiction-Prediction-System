@@ -16,11 +16,11 @@ import {
 
 export default function AnxietyWhenAway() {
   const data = [
-    { level: "Never", count: 68 },
-    { level: "Rarely", count: 98 },
-    { level: "Sometimes", count: 124 },
-    { level: "Often", count: 82 },
-    { level: "Always", count: 11 },
+    { level: "Never", count: 1 },
+    { level: "Rarely", count: 2 },
+    { level: "Sometimes", count: 3 },
+    { level: "Often", count: 4 },
+    { level: "Always", count: 5 },
   ];
 
   const chartConfig = {

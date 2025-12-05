@@ -14,13 +14,41 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 
-export default function FamilyVsRisk() {
+export default function FamilyVsRisk({ familyCommunicationVsRiskData }) {
+  // console.log("Family vs Risk Data:", familyCommunicationVsRiskData);
+
+  const counts = familyCommunicationVsRiskData.reduce((acc, item) => {
+    const key = `${item.family_communication}_${item.phone_addiction}`; // Concatenate frequency and addiction status
+    acc[key] = (acc[key] || 0) + 1; // Increment count for each unique combination
+    return acc;
+  }, {});
+
   const data = [
-    { frequency: "Never", atRisk: 10, notAtRisk: 2 },
-    { frequency: "Rarely", atRisk: 22, notAtRisk: 12 },
-    { frequency: "Sometimes", atRisk: 44, notAtRisk: 45 },
-    { frequency: "Often", atRisk: 48, notAtRisk: 108 },
-    { frequency: "Always", atRisk: 18, notAtRisk: 74 },
+    {
+      frequency: "Never",
+      atRisk: counts["never_yes"],
+      notAtRisk: counts["never_no"],
+    },
+    {
+      frequency: "Rarely",
+      atRisk: counts["rarely_yes"],
+      notAtRisk: counts["rarely_no"],
+    },
+    {
+      frequency: "Sometimes",
+      atRisk: counts["sometimes_yes"],
+      notAtRisk: counts["sometimes_no"],
+    },
+    {
+      frequency: "Often",
+      atRisk: counts["often_yes"],
+      notAtRisk: counts["often_no"],
+    },
+    {
+      frequency: "Always",
+      atRisk: counts["always_yes"],
+      notAtRisk: counts["always_no"],
+    },
   ];
 
   const chartConfig = {

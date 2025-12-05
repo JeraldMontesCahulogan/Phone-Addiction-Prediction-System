@@ -59,8 +59,11 @@ export default function DailyUsageVsRisk({ dailyPhoneUsageVsRiskData }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Usage vs Addiction Risk</CardTitle>
-        <CardDescription>Risk relationship with screen time</CardDescription>
+        <CardTitle>Daily Phone Usage</CardTitle>
+        <CardDescription>
+          Number of respondents per screen time categories and their associated
+          risk levels.
+        </CardDescription>
       </CardHeader>
 
       <CardContent>

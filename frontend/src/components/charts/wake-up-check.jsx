@@ -14,11 +14,11 @@ import {
 
 export default function WakeUpCheck() {
   const data = [
-    { frequency: "Never", count: 32 },
-    { frequency: "Rarely", count: 72 },
-    { frequency: "Sometimes", count: 134 },
-    { frequency: "Often", count: 112 },
-    { frequency: "Always", count: 33 },
+    { frequency: "Never", count: 1 },
+    { frequency: "Rarely", count: 2 },
+    { frequency: "Sometimes", count: 3 },
+    { frequency: "Often", count: 4 },
+    { frequency: "Always", count: 5 },
   ];
 
   const chartConfig = {

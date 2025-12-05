@@ -16,11 +16,11 @@ import {
 
 export default function FamilyCommunication() {
   const data = [
-    { frequency: "Never", count: 12 },
-    { frequency: "Rarely", count: 34 },
-    { frequency: "Sometimes", count: 89 },
-    { frequency: "Often", count: 156 },
-    { frequency: "Always", count: 92 },
+    { frequency: "Never", count: 1 },
+    { frequency: "Rarely", count: 2 },
+    { frequency: "Sometimes", count: 3 },
+    { frequency: "Often", count: 4 },
+    { frequency: "Always", count: 5 },
   ];
 
   const chartConfig = {

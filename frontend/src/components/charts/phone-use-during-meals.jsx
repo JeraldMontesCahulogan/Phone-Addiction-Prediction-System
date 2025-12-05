@@ -14,11 +14,11 @@ import {
 
 export default function PhoneUseDuringMeals() {
   const data = [
-    { frequency: "Never", count: 42 },
-    { frequency: "Rarely", count: 78 },
-    { frequency: "Sometimes", count: 145 },
-    { frequency: "Often", count: 98 },
-    { frequency: "Always", count: 20 },
+    { frequency: "Never", count: 1 },
+    { frequency: "Rarely", count: 2 },
+    { frequency: "Sometimes", count: 3 },
+    { frequency: "Often", count: 4 },
+    { frequency: "Always", count: 5 },
   ];
 
   const chartConfig = {

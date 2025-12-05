@@ -54,8 +54,10 @@ export default function SleepVsRisk({ sleepDurationVsRiskData }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Sleep vs Addiction Risk</CardTitle>
-        <CardDescription>Sleep duration impact on addiction</CardDescription>
+        <CardTitle>Sleep Duration</CardTitle>
+        <CardDescription>
+          Number of hours of sleep per day and their addiction risk status
+        </CardDescription>
       </CardHeader>
 
       <CardContent>

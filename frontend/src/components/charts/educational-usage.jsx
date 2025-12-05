@@ -16,11 +16,11 @@ import {
 
 export default function EducationalUsage() {
   const data = [
-    { category: "<30 min", count: 89 },
-    { category: "30-60 min", count: 124 },
-    { category: "1-2 hrs", count: 98 },
-    { category: "2-3 hrs", count: 56 },
-    { category: ">3 hrs", count: 16 },
+    { category: "<30 min", count: 1 },
+    { category: "30-60 min", count: 2 },
+    { category: "1-2 hrs", count: 3 },
+    { category: "2-3 hrs", count: 4 },
+    { category: ">3 hrs", count: 5 },
   ];
 
   const chartConfig = {

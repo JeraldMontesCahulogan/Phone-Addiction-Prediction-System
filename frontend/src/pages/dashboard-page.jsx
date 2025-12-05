@@ -44,14 +44,12 @@ export default function DashboardPage() {
       phone_addiction: 0,
     },
   ]);
-  const [dailyPhoneUsageData, setDailyPhoneUsageData] = useState([]);
   const [dailyPhoneUsageVsRiskData, setDailyPhoneUsageVsRiskData] = useState([
     {
       phone_use_hours: "",
       phone_addiction: 0,
     },
   ]);
-  const [sleepDurationData, setSleepDurationData] = useState([]);
   const [sleepDurationVsRiskData, setSleepDurationVsRiskData] = useState([
     {
       sleep_hours: "",
@@ -60,69 +58,195 @@ export default function DashboardPage() {
   ]);
 
   // Usage Pattern Graphs Sate ----------------------------------------
-  const [personInteractionData, setPersonInteraction] = useState([]);
+  const [personInteractionVsRiskData, setPersonInteractionVsRiskData] =
+    useState([
+      {
+        person_interaction: "",
+        phone_addiction: 0,
+      },
+    ]);
+  const [socialMediaUsageVsRiskData, setSocialMediaUsageVsRiskData] = useState([
+    {
+      social_media_hours: "",
+      phone_addiction: 0,
+    },
+  ]);
+  const [gamingUsageDailyVsRiskData, setGamingUsageDailyVsRiskData] = useState([
+    {
+      gaming_hours: "",
+      phone_addiction: 0,
+    },
+  ]);
+  const [educationalTimeDailyVsRiskData, setEducationalTimeDailyVsRiskData] =
+    useState([
+      {
+        educational_hours: "",
+        phone_addiction: 0,
+      },
+    ]);
+  const [familyCommunicationVsRiskData, setFamilyCommunicationVsRiskData] =
+    useState([
+      {
+        family_communication: "",
+        phone_addiction: 0,
+      },
+    ]);
+
+  // Behavior Graphs State ---------------------------------------------
+  const [anxietyVsRiskData, setAnxietyVsRiskData] = useState([
+    {
+      phone_anxiety: "",
+      phone_addiction: 0,
+    },
+  ]);
+  const [phoneUseDuringMealsVsRiskData, setPhoneUseDuringMealsVsRiskData] =
+    useState([
+      {
+        phone_during_meals: "",
+        phone_addiction: 0,
+      },
+    ]);
+  const [timePerceptionVsRiskData, setTimePerceptionVsRiskData] = useState([
+    {
+      lose_track_time: "",
+      phone_addiction: 0,
+    },
+  ]);
+  const [beforeSleepVsRiskData, setBeforeSleepVsRiskData] = useState([
+    {
+      phone_before_sleep: "",
+      phone_addiction: 0,
+    },
+  ]);
+  const [wakeUpVsRiskData, setWakeUpVsRiskData] = useState([
+    {
+      phone_after_wakeup: "",
+      phone_addiction: 0,
+    },
+  ]);
 
   // Data Processing for All Graphs ------------------------------------
   useEffect(() => {
     if (!phoneAddictionData || phoneAddictionData.length === 0) return; // Exit if no data
 
     const {
+      // Overview
       rates,
       genderVsAddiction,
-      dailyPhoneUsage,
       dailyPhoneUsageVsRisk,
-      sleepDuration,
       sleepVsRisk,
-      socialInteraction,
+
+      // Usage Pattern
+      socialInteractionVsRisk,
+      socialMediaUsageVsRisk,
+      gamingUsageDailyVsRisk,
+      educationalTimeDailyVsRiskData,
+      familyCommunicationVsRiskData,
+
+      // Behavior
+      anxietyVsRisk,
+      phoneUseDuringMealsVsRisk,
+      timePerceptionVsRisk,
+      beforeSleepVsRisk,
+      wakeUpVsRisk,
     } = phoneAddictionData.reduce(
       (acc, item) => {
         // OVERVIEW GRAPHS : DATA PROCESSING --------------------------------------------------------------
         // Overall Addiction Rate
         acc.rates.push(item.phone_addiction);
-        // Gender vs Phone Addiction
         acc.genderVsAddiction.push({
           gender: item.gender,
           phone_addiction: item.phone_addiction,
         });
-        // Daily Phone Usage Distribution
-        acc.dailyPhoneUsage.push(item.phone_use_hours);
-        // Daily usage vs risk
         acc.dailyPhoneUsageVsRisk.push({
           phone_use_hours: item.phone_use_hours,
           phone_addiction: item.phone_addiction,
         });
-        // Sleep Duration Distribution
-        acc.sleepDuration.push(item.sleep_hours);
-        // Sleep Duration vs Addiction Risk
         acc.sleepVsRisk.push({
           sleep_hours: item.sleep_hours,
           phone_addiction: item.phone_addiction,
         });
 
         // USAGE PATTERN GRAPHS : DATA PROCESSING --------------------------------------------------------
-        acc.socialInteraction.push(item.person_interaction);
+        acc.socialInteractionVsRisk.push({
+          person_interaction: item.person_interaction,
+          phone_addiction: item.phone_addiction,
+        });
+        acc.socialMediaUsageVsRisk.push({
+          social_media_hours: item.social_media_hours,
+          phone_addiction: item.phone_addiction,
+        });
+        acc.gamingUsageDailyVsRisk.push({
+          gaming_hours: item.gaming_hours,
+          phone_addiction: item.phone_addiction,
+        });
+        acc.educationalTimeDailyVsRiskData.push({
+          educational_hours: item.educational_hours,
+          phone_addiction: item.phone_addiction,
+        });
+        acc.familyCommunicationVsRiskData.push({
+          family_communication: item.family_communication,
+          phone_addiction: item.phone_addiction,
+        });
+
+        // BEHAVIOR GRAPHS : DATA PROCESSING -------------------------------------------------------------
+        acc.anxietyVsRisk.push({
+          phone_anxiety: item.phone_anxiety,
+          phone_addiction: item.phone_addiction,
+        });
+        acc.phoneUseDuringMealsVsRisk.push({
+          phone_during_meals: item.phone_during_meals,
+          phone_addiction: item.phone_addiction,
+        });
+        acc.timePerceptionVsRisk.push({
+          lose_track_time: item.lose_track_time,
+          phone_addiction: item.phone_addiction,
+        });
+        acc.beforeSleepVsRisk.push({
+          phone_before_sleep: item.phone_before_sleep,
+          phone_addiction: item.phone_addiction,
+        });
+        acc.wakeUpVsRisk.push({
+          phone_after_wakeup: item.phone_after_wakeup,
+          phone_addiction: item.phone_addiction,
+        });
 
         return acc;
       },
       {
-        rates: [], // Initialize overall addiction rate array
-        genderVsAddiction: [], // Initialize gender vs addiction array
-        dailyPhoneUsage: [], // Initialize daily usage array
-        dailyPhoneUsageVsRisk: [], // Initialize daily usage vs risk array
-        sleepDuration: [], // Initialize sleep duration array
-        sleepVsRisk: [], // Initialize sleep vs risk array
-        socialInteraction: [],
+        // Initialize all arrays
+        rates: [],
+        genderVsAddiction: [],
+        dailyPhoneUsageVsRisk: [],
+        sleepVsRisk: [],
+        socialInteractionVsRisk: [],
+        socialMediaUsageVsRisk: [],
+        gamingUsageDailyVsRisk: [],
+        educationalTimeDailyVsRiskData: [],
+        familyCommunicationVsRiskData: [],
+        anxietyVsRisk: [],
+        phoneUseDuringMealsVsRisk: [],
+        timePerceptionVsRisk: [],
+        beforeSleepVsRisk: [],
+        wakeUpVsRisk: [],
       }
     );
 
     // Update all states ----------------------------------------------
-    setOverallAddictionRate(rates); // Set overall addiction rate state
-    setGenderVsAddictionData(genderVsAddiction); // Set gender vs addiction state
-    setDailyPhoneUsageData(dailyPhoneUsage); // Set daily phone usage state
-    setDailyPhoneUsageVsRiskData(dailyPhoneUsageVsRisk); // Set daily usage vs risk state
-    setSleepDurationData(sleepDuration); // Set sleep duration state
-    setSleepDurationVsRiskData(sleepVsRisk); // Set sleep vs risk state
-    setPersonInteraction(socialInteraction);
+    setOverallAddictionRate(rates);
+    setGenderVsAddictionData(genderVsAddiction);
+    setDailyPhoneUsageVsRiskData(dailyPhoneUsageVsRisk);
+    setSleepDurationVsRiskData(sleepVsRisk);
+    setPersonInteractionVsRiskData(socialInteractionVsRisk);
+    setSocialMediaUsageVsRiskData(socialMediaUsageVsRisk);
+    setGamingUsageDailyVsRiskData(gamingUsageDailyVsRisk);
+    setEducationalTimeDailyVsRiskData(educationalTimeDailyVsRiskData);
+    setFamilyCommunicationVsRiskData(familyCommunicationVsRiskData);
+    setAnxietyVsRiskData(anxietyVsRisk);
+    setPhoneUseDuringMealsVsRiskData(phoneUseDuringMealsVsRisk);
+    setTimePerceptionVsRiskData(timePerceptionVsRisk);
+    setBeforeSleepVsRiskData(beforeSleepVsRisk);
+    setWakeUpVsRiskData(wakeUpVsRisk);
   }, [phoneAddictionData]); // Run whenever phoneAddictionData changes
 
   // console.log(dailyPhoneUsageVsRiskData);
@@ -242,29 +366,17 @@ export default function DashboardPage() {
 
           {/* Overview Section */}
           {activeSection === "overview" && (
-            <div className="space-y-6">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <OverallAddictionRate
-                  overallAddictionRate={overallAddictionRate}
-                />
-                <GenderVsAddiction
-                  genderVsAddictionData={genderVsAddictionData}
-                />
-              </div>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <DailyUsageDistribution
-                  dailyPhoneUsageData={dailyPhoneUsageData}
-                />
-                <DailyUsageVsRisk
-                  dailyPhoneUsageVsRiskData={dailyPhoneUsageVsRiskData}
-                />
-              </div>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <SleepDistribution sleepDurationData={sleepDurationData} />
-                <SleepVsRisk
-                  sleepDurationVsRiskData={sleepDurationVsRiskData}
-                />
-              </div>
+            <div className="space-y-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <OverallAddictionRate
+                overallAddictionRate={overallAddictionRate}
+              />
+              <GenderVsAddiction
+                genderVsAddictionData={genderVsAddictionData}
+              />
+              <DailyUsageVsRisk
+                dailyPhoneUsageVsRiskData={dailyPhoneUsageVsRiskData}
+              />
+              <SleepVsRisk sleepDurationVsRiskData={sleepDurationVsRiskData} />
             </div>
           )}
 
@@ -272,26 +384,36 @@ export default function DashboardPage() {
           {activeSection === "usage" && (
             <div className="space-y-6">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <InteractionFrequency
-                  personInteractionData={personInteractionData}
+                <InteractionFrequency />
+                <InteractionVsRisk
+                  personInteractionVsRiskData={personInteractionVsRiskData}
                 />
-                <InteractionVsRisk />
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <SocialMediaUsage />
-                <SocialMediaVsRisk />
+                <SocialMediaVsRisk
+                  socialMediaUsageVsRiskData={socialMediaUsageVsRiskData}
+                />
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <GamingUsage />
-                <GamingVsRisk />
+                <GamingVsRisk
+                  gamingUsageDailyVsRiskData={gamingUsageDailyVsRiskData}
+                />
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <EducationalUsage />
-                <EducationalVsRisk />
+                <EducationalVsRisk
+                  educationalTimeDailyVsRiskData={
+                    educationalTimeDailyVsRiskData
+                  }
+                />
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <FamilyCommunication />
-                <FamilyVsRisk />
+                <FamilyVsRisk
+                  familyCommunicationVsRiskData={familyCommunicationVsRiskData}
+                />
               </div>
             </div>
           )}
@@ -301,23 +423,29 @@ export default function DashboardPage() {
             <div className="space-y-6">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <AnxietyWhenAway />
-                <AnxietyVsRisk />
+                <AnxietyVsRisk anxietyVsRiskData={anxietyVsRiskData} />
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <PhoneUseDuringMeals />
-                <MealsVsRisk />
+                <MealsVsRisk
+                  phoneUseDuringMealsVsRiskData={phoneUseDuringMealsVsRiskData}
+                />
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <LoseTrackOfTime />
-                <LoseTrackVsRisk />
+                <LoseTrackVsRisk
+                  timePerceptionVsRiskData={timePerceptionVsRiskData}
+                />
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <PhoneBeforeSleep />
-                <BeforeSleepVsRisk />
+                <BeforeSleepVsRisk
+                  beforeSleepVsRiskData={beforeSleepVsRiskData}
+                />
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <WakeUpCheck />
-                <WakeUpVsRisk />
+                <WakeUpVsRisk wakeUpVsRiskData={wakeUpVsRiskData} />
               </div>
             </div>
           )}

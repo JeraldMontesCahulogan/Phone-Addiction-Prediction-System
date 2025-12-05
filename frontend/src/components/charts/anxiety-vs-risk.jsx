@@ -14,13 +14,41 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 
-export default function AnxietyVsRisk() {
+export default function AnxietyVsRisk({ anxietyVsRiskData }) {
+  // console.log("Anxiety vs Risk Data:", anxietyVsRiskData);
+
+  const counts = anxietyVsRiskData.reduce((acc, item) => {
+    const key = `${item.phone_anxiety}_${item.phone_addiction}`;
+    acc[key] = (acc[key] || 0) + 1;
+    return acc;
+  }, {});
+
   const data = [
-    { level: "Never", atRisk: 8, notAtRisk: 60 },
-    { level: "Rarely", atRisk: 22, notAtRisk: 76 },
-    { level: "Sometimes", atRisk: 68, notAtRisk: 56 },
-    { level: "Often", atRisk: 62, notAtRisk: 20 },
-    { level: "Always", atRisk: 12, notAtRisk: 1 }, // fixed negative value
+    {
+      level: "Never",
+      atRisk: counts["never_yes"],
+      notAtRisk: counts["never_no"],
+    },
+    {
+      level: "Rarely",
+      atRisk: counts["rarely_yes"],
+      notAtRisk: counts["rarely_no"],
+    },
+    {
+      level: "Sometimes",
+      atRisk: counts["sometimes_yes"],
+      notAtRisk: counts["sometimes_no"],
+    },
+    {
+      level: "Often",
+      atRisk: counts["often_yes"],
+      notAtRisk: counts["often_no"],
+    },
+    {
+      level: "Always",
+      atRisk: counts["always_yes"],
+      notAtRisk: counts["always_no"],
+    },
   ];
 
   // matching shadcn pattern (like chartConfig in ChartBarDefault)

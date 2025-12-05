@@ -16,11 +16,11 @@ import {
 
 export default function LoseTrackOfTime() {
   const data = [
-    { frequency: "Never", count: 34 },
-    { frequency: "Rarely", count: 67 },
-    { frequency: "Sometimes", count: 156 },
-    { frequency: "Often", count: 98 },
-    { frequency: "Always", count: 28 },
+    { frequency: "Never", count: 1 },
+    { frequency: "Rarely", count: 2 },
+    { frequency: "Sometimes", count: 3 },
+    { frequency: "Often", count: 4 },
+    { frequency: "Always", count: 5 },
   ];
 
   const chartConfig = {
